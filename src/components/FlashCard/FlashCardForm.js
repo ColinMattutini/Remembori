@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useState } from "react";
+import IndividualFlashcard from "./IndividualFlashcard";
 
 const FlashCardForm = () => {
   const [question, setQuestion] = useState("");
@@ -30,6 +31,14 @@ const FlashCardForm = () => {
     setQuestion("");
   };
 
+  const flashCardSet = cardSet.map((cards) => (
+    <IndividualFlashcard
+      counter={cards.counter}
+      question={cards.question}
+      answer={cards.answer}
+    />
+  ));
+
   const printSet = () => {
     for (const item in cardSet) {
       console.log(cardSet[item]);
@@ -37,14 +46,17 @@ const FlashCardForm = () => {
   };
 
   return (
-    <div>
-      <h1>Question</h1>
-      <input onChange={questionHandler} value={question}></input>
-      <h1>Answer</h1>
-      <input onChange={answerHandler} value={answer}></input>
-      <button onClick={submitCard}>Add Card</button>
-      <button onClick={printSet}>Print</button>
-    </div>
+    <Fragment>
+      <div>
+        <h1>Question</h1>
+        <input onChange={questionHandler} value={question}></input>
+        <h1>Answer</h1>
+        <input onChange={answerHandler} value={answer}></input>
+        <button onClick={submitCard}>Add Card</button>
+        <button onClick={printSet}>Print</button>
+      </div>
+      {flashCardSet}
+    </Fragment>
   );
 };
 
