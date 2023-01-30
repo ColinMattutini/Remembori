@@ -26,6 +26,8 @@ const FlashCardForm = () => {
     ]);
     localStorage.setItem("flashCardSet", JSON.stringify(cardSet));
     setCounter(counter + 1);
+    setAnswer("");
+    setQuestion("");
   };
 
   const printSet = () => {
@@ -37,9 +39,9 @@ const FlashCardForm = () => {
   return (
     <div>
       <h1>Question</h1>
-      <input onChange={questionHandler}></input>
+      <input onChange={questionHandler} value={question}></input>
       <h1>Answer</h1>
-      <input onChange={answerHandler}></input>
+      <input onChange={answerHandler} value={answer}></input>
       <button onClick={submitCard}>Add Card</button>
       <button onClick={printSet}>Print</button>
     </div>
