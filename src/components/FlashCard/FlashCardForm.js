@@ -19,36 +19,29 @@ const FlashCardForm = () => {
     setCardSet((cardSet) => [
       ...cardSet,
       {
+        counter: counter,
         question: question,
         answer: answer,
       },
     ]);
     localStorage.setItem("flashCardSet", JSON.stringify(cardSet));
-    console.log(cardSet);
-  };
-
-  const counterIncreaseHandler = () => {
     setCounter(counter + 1);
-    console.log(counter);
   };
 
-  const counterDecreaseHandler = () => {
-    setCounter(counter - 1);
-    console.log(counter);
+  const printSet = () => {
+    for (const item in cardSet) {
+      console.log(cardSet[item]);
+    }
   };
 
   return (
     <div>
       <h1>Question</h1>
-      <input
-        onChange={questionHandler}
-        value={JSON.stringify(cardSet[counter].question)}
-      ></input>
+      <input onChange={questionHandler}></input>
       <h1>Answer</h1>
       <input onChange={answerHandler}></input>
-      <button onClick={submitCard}>Console Log</button>
-      <button onClick={counterDecreaseHandler}>Back</button>
-      <button onClick={counterIncreaseHandler}>Forward</button>
+      <button onClick={submitCard}>Add Card</button>
+      <button onClick={printSet}>Print</button>
     </div>
   );
 };
