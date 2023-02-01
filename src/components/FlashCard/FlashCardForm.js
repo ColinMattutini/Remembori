@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { useState } from "react";
 import IndividualFlashcard from "./IndividualFlashcard";
 
@@ -20,15 +20,20 @@ const FlashCardForm = () => {
     setCardSet((cardSet) => [
       ...cardSet,
       {
+        key: counter,
         counter: counter,
         question: question,
         answer: answer,
       },
     ]);
-    localStorage.setItem("flashCardSet", JSON.stringify(cardSet));
     setCounter(counter + 1);
     setAnswer("");
     setQuestion("");
+  };
+
+  const saveSet = () => {
+    localStorage.setItem("flashCardSet", JSON.stringify(cardSet));
+    console.log("Successfully saved!");
   };
 
   const flashCardSet = cardSet.map((cards) => (
@@ -48,6 +53,7 @@ const FlashCardForm = () => {
   return (
     <Fragment>
       <div>
+        <button onClick={saveSet}>Save Set</button>
         <h1>Question</h1>
         <input onChange={questionHandler} value={question}></input>
         <h1>Answer</h1>
