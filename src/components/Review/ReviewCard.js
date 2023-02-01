@@ -9,6 +9,11 @@ const ReviewCard = () => {
     setReviewSet(JSON.parse(localStorage.getItem("flashCardSet")));
   };
 
+  useEffect(() => {
+    testHandler();
+    console.log("Set Added For Review");
+  }, []);
+
   return (
     <div>
       <button onClick={testHandler}>Reset</button>
