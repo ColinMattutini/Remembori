@@ -36,6 +36,24 @@ const FlashCardForm = () => {
     setQuestion("");
   };
 
+  const submitSet = async () => {
+    for (const item in cardSet) {
+      const response = await fetch("placeholderforAPIgateway", {
+        method: "POST",
+        body: JSON.stringify({
+          id: cardSet[item].counter,
+          title: title,
+          question: cardSet[item].question,
+          answer: cardSet[item].answer,
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
+      if (response.ok) {
+        console.log("Success saving card " + counter);
+      }
+    }
+  };
+
   const saveSet = () => {
     localStorage.setItem(title, JSON.stringify(cardSet));
     console.log("Successfully saved!");
@@ -51,7 +69,9 @@ const FlashCardForm = () => {
 
   const printSet = () => {
     for (const item in cardSet) {
-      console.log(cardSet[item]);
+      console.log(cardSet[item].counter);
+      console.log(cardSet[item].question);
+      console.log(cardSet[item].answer);
     }
   };
 
