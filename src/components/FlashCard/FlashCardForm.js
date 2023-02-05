@@ -7,6 +7,7 @@ const FlashCardForm = () => {
   const [answer, setAnswer] = useState("");
   const [cardSet, setCardSet] = useState([]);
   const [counter, setCounter] = useState(0);
+  const [title, setTitle] = useState("");
 
   const answerHandler = (e) => {
     setAnswer(e.target.value);
@@ -14,6 +15,10 @@ const FlashCardForm = () => {
 
   const questionHandler = (e) => {
     setQuestion(e.target.value);
+  };
+
+  const titleHandler = (e) => {
+    setTitle(e.target.value);
   };
 
   const submitCard = () => {
@@ -32,7 +37,7 @@ const FlashCardForm = () => {
   };
 
   const saveSet = () => {
-    localStorage.setItem("flashCardSet", JSON.stringify(cardSet));
+    localStorage.setItem(title, JSON.stringify(cardSet));
     console.log("Successfully saved!");
   };
 
@@ -52,6 +57,10 @@ const FlashCardForm = () => {
 
   return (
     <Fragment>
+      <div>
+        <h2>Flashcard Set Title</h2>
+        <input onChange={titleHandler} />
+      </div>
       <div>
         <button onClick={saveSet}>Save Set</button>
         <h1>Question</h1>
