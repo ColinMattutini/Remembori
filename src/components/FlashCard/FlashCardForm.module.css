@@ -1,0 +1,13 @@
+.spacer {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  padding-top: 16px;
+}
+
+.spacer button {
+  font-style: bold;
+  font-size: large;
+  border-radius: 8px;
+  background-color: #9ceca0;
+}
