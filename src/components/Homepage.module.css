@@ -4,6 +4,40 @@
   min-height: 90vh;
 }
 
+.mainbackground {
+  padding: 1rem;
+  height: 85vh;
+  width: 40%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+}
+
 .alignment {
   margin: auto;
+}
+
+.buttonstack {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.buttonstack button {
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  font-size: larger;
+  cursor: pointer;
+}
+
+.buttonstack button:active {
+  background-color: antiquewhite;
+}
+
+@media screen and (max-width: 540px) {
+  .mainbackground {
+    width: 100%;
+  }
 }

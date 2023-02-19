@@ -1,29 +1,30 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FlashCard from "./FlashCard/FlashCard";
 import classes from "./Homepage.module.css";
 import ReviewPage from "./Review/ReviewPage";
 
 const Homepage = () => {
-  const [createSet, setCreateSet] = useState(true);
-  const [reviewSet, setReviewSet] = useState(false);
+  const nav = useNavigate();
 
   const createHandler = () => {
-    createSet ? setCreateSet(false) : setCreateSet(true);
-    setReviewSet(false);
+    nav("/createset");
   };
 
   const reviewHandler = () => {
-    reviewSet ? setReviewSet(false) : setReviewSet(true);
-    setCreateSet(false);
+    nav("/review");
   };
 
   return (
     <div className={classes.homepage}>
-      <div className={classes.alignment}>
-        <button onClick={createHandler}>Create FlashCard Set</button>
-        <button onClick={reviewHandler}>Review Flashcards</button>
-        {createSet && <FlashCard />}
-        {reviewSet && <ReviewPage />}
+      <div className={classes.mainbackground}>
+        <div className={classes.alignment}>
+          <div className={classes.buttonstack}>
+            <button onClick={createHandler}>Create FlashCard Set</button>
+
+            <button onClick={reviewHandler}>Review Flashcards</button>
+          </div>
+        </div>
       </div>
     </div>
   );
