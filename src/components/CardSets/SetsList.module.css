@@ -1,0 +1,10 @@
+.cardWrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 14px;
+}
+
+/* .columnItem:nth-of-type(4),
+.columnItem:nth-of-type(5) {
+  flex-basis: 55%;
+} */

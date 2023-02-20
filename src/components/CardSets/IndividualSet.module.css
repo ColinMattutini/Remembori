@@ -4,14 +4,18 @@
 
 .card {
   text-align: center;
-  padding: 1rem;
-  width: 95%;
-  height: 35vh;
+  /* padding: 1rem; */
+  width: 90%;
+  height: 15vh;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.75);
   border-radius: 14px;
   background-color: rgb(255, 255, 255);
-  margin: auto;
+  /* margin: auto; */
   cursor: pointer;
   word-wrap: break-word;
   overflow: hidden;
+}
+
+.cardWrap {
+  display: flex;
 }

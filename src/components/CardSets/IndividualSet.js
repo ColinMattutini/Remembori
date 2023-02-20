@@ -11,8 +11,10 @@ const IndividualSets = (props) => {
   };
 
   return (
-    <div className={classes.card} onClick={navHandler}>
-      <h1>{props.name}</h1>
+    <div className={classes.cardWrap}>
+      <div className={classes.card} onClick={navHandler}>
+        <h1>{props.name}</h1>
+      </div>
     </div>
   );
 };
