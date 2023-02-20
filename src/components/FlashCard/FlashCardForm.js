@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { useState } from "react";
 import IndividualFlashcard from "./IndividualFlashcard";
+import classes from "./FlashCardForm.module.css";
 
 const FlashCardForm = () => {
   const [question, setQuestion] = useState("");
@@ -87,8 +88,9 @@ const FlashCardForm = () => {
         <input onChange={questionHandler} value={question}></input>
         <h1>Answer</h1>
         <input onChange={answerHandler} value={answer}></input>
-        <button onClick={submitCard}>Add Card</button>
-        <button onClick={printSet}>Print</button>
+        <div className={classes.spacer}>
+          <button onClick={submitCard}>Add Card</button>
+        </div>
       </div>
       {flashCardSet}
     </Fragment>

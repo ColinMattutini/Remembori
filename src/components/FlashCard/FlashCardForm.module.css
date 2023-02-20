@@ -10,4 +10,9 @@
   font-size: large;
   border-radius: 8px;
   background-color: #9ceca0;
+  cursor: pointer;
+}
+
+.spacer button:active {
+  background-color: #73ac77;
 }
