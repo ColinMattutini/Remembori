@@ -12,7 +12,7 @@ const Homepage = () => {
   };
 
   const reviewHandler = () => {
-    nav("/review");
+    nav("/reviewset");
   };
 
   return (
@@ -21,7 +21,6 @@ const Homepage = () => {
         <div className={classes.alignment}>
           <div className={classes.buttonstack}>
             <button onClick={createHandler}>Create FlashCard Set</button>
-
             <button onClick={reviewHandler}>Review Flashcards</button>
           </div>
         </div>

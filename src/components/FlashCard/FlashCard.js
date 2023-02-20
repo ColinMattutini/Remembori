@@ -7,7 +7,7 @@ const FlashCard = () => {
   const nav = useNavigate();
 
   const returnHandler = () => {
-    nav("/home");
+    nav("/");
   };
 
   return (
