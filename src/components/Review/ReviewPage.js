@@ -1,6 +1,5 @@
 import React from "react";
 import ReviewCard from "./ReviewCard";
-import ReviewSetSelect from "./ReviewSetSelect";
 import classes from "./ReviewPage.module.css";
 import { useNavigate } from "react-router-dom";
 
@@ -8,7 +7,7 @@ const ReviewPage = () => {
   const nav = useNavigate();
 
   const returnHandler = () => {
-    nav("/home");
+    nav("/");
   };
 
   return (
@@ -18,7 +17,6 @@ const ReviewPage = () => {
           <button onClick={returnHandler}>Back</button>
         </div>
         <ReviewCard />
-        {/* <ReviewSetSelect /> */}
       </div>
     </div>
   );
