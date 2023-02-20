@@ -15,7 +15,7 @@ const ReviewCard = () => {
   const [cardIndex, setCardIndex] = useState(0);
 
   const testHandler = () => {
-    setReviewSet(JSON.parse(localStorage.getItem("test")));
+    setReviewSet(JSON.parse(localStorage.getItem(pathName)));
   };
 
   const showAnswerHandler = () => {
