@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import classes from "./ReviewCard.module.css";
 
 const ReviewCard = () => {
+  const pathName = window.location.pathname.split("/").pop();
   const [reviewSet, setReviewSet] = useState([
-    JSON.parse(localStorage.getItem("test")),
+    JSON.parse(localStorage.getItem(pathName)),
   ]);
 
   const [shuffledSet, setShuffledSet] = useState([]);
@@ -50,16 +53,19 @@ const ReviewCard = () => {
 
   return (
     <div>
-      <button onClick={testHandler}>Reset</button>
-      <h1>Question 1</h1>
-      {!showAnswer && <h2>{reviewSet[cardIndex].question}</h2>}
-      {showAnswer && <h2>{reviewSet[cardIndex].answer}</h2>}
-      <button onClick={() => setShuffledSet(shuffleCards(reviewSet))}>
-        Shuffle
-      </button>
-      <button onClick={showAnswerHandler}>Show Answer</button>
-      <button onClick={cardIndexDecreaser}>Previous</button>
-      <button onClick={cardIndexIncreaser}>Next</button>
+      <div className={classes.textalign}>
+        <h1>
+          {cardIndex + 1}/{reviewSet.length}
+        </h1>
+        <div className={classes.card} onClick={showAnswerHandler}>
+          {!showAnswer && <h2>{reviewSet[cardIndex].question}</h2>}
+          {showAnswer && <h2>{reviewSet[cardIndex].answer}</h2>}
+        </div>
+        <div className={classes.buttonspacing}>
+          <button onClick={cardIndexDecreaser}>Previous</button>
+          <button onClick={cardIndexIncreaser}>Next</button>
+        </div>
+      </div>
     </div>
   );
 };
