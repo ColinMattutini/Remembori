@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import classes from "./ReviewCard.module.css";
 
 const ReviewCard = () => {
-  const pathName = window.location.pathname.split("/").pop();
+  let pathName = window.location.pathname.split("/").pop();
+  pathName = pathName.replace("%20", " ");
+
   const [reviewSet, setReviewSet] = useState([
     JSON.parse(localStorage.getItem(pathName)),
   ]);
