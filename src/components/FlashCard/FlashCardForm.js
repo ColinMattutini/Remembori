@@ -79,11 +79,13 @@ const FlashCardForm = () => {
   return (
     <Fragment>
       <div>
-        <h2>Flashcard Set Title</h2>
+        <div className={classes.submitAdjust}>
+          <h1>Flashcard Set Title</h1>
+          <button onClick={saveSet}>Save Set</button>
+        </div>
         <input onChange={titleHandler} />
       </div>
       <div>
-        <button onClick={saveSet}>Save Set</button>
         <h1>Question</h1>
         <input onChange={questionHandler} value={question}></input>
         <h1>Answer</h1>
