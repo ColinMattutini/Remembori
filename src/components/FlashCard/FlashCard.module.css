@@ -1,7 +1,7 @@
 .homepage {
   display: flex;
   width: 100%;
-  min-height: 90vh;
+  min-height: 100vh;
 }
 
 .mainbackground {
@@ -12,4 +12,10 @@
   border-radius: 14px;
   background-color: rgb(255, 255, 255);
   margin: auto;
+}
+
+@media screen and (max-width: 540px) {
+  .mainbackground {
+    width: 100%;
+  }
 }
