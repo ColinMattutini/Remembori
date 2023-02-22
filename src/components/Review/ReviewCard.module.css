@@ -3,6 +3,10 @@
 }
 
 .card {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
   padding: 1rem;
   width: 95%;
   height: 35vh;

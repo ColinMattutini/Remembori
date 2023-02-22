@@ -4,6 +4,10 @@
 
 .card {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
   /* padding: 1rem; */
   width: 90%;
   height: 15vh;

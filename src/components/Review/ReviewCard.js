@@ -58,8 +58,8 @@ const ReviewCard = () => {
           {cardIndex + 1}/{reviewSet.length}
         </h1>
         <div className={classes.card} onClick={showAnswerHandler}>
-          {!showAnswer && <h2>{reviewSet[cardIndex].question}</h2>}
-          {showAnswer && <h2>{reviewSet[cardIndex].answer}</h2>}
+          {!showAnswer && <h1>{reviewSet[cardIndex].question}</h1>}
+          {showAnswer && <h1>{reviewSet[cardIndex].answer}</h1>}
         </div>
         <div className={classes.buttonspacing}>
           <button onClick={cardIndexDecreaser}>Previous</button>
