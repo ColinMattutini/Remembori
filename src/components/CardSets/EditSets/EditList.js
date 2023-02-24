@@ -15,14 +15,13 @@ const EditList = () => {
   };
 
   const backHandler = () => {
-    nav("/reviewset");
+    nav("/review/" + pathName);
   };
 
   return (
     <div className={classes.homepage}>
       <div className={classes.mainbackground}>
         <button onClick={backHandler}>Back</button>
-        <button>Delete</button>
         <IndividualEdit submitTest={submitTest} />
       </div>
     </div>
