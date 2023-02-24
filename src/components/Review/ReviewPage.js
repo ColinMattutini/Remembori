@@ -7,7 +7,7 @@ const ReviewPage = () => {
   const nav = useNavigate();
 
   const returnHandler = () => {
-    nav("/");
+    nav("/reviewset");
   };
 
   return (
