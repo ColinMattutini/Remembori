@@ -1,7 +1,14 @@
 .spacer {
   display: flex;
   flex-direction: column;
-  padding-top: 16px;
+  padding-top: 24px;
+  overflow: scroll;
+  scrollbar-width: none;
+  background-image: none;
+}
+
+.spacer::-webkit-scrollbar {
+  display: none;
 }
 
 .submitAdjust {
@@ -24,7 +31,7 @@ input {
   margin: 8px 0;
 }
 
-h1 {
+h2 {
   margin: 0;
   padding: 0;
 }
@@ -41,4 +48,18 @@ h1 {
 
 .spacer button:active {
   background-color: #73ac77;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  padding-top: 12px;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+}
+
+.iconSizing {
+  transform: scale(2);
+  cursor: pointer;
 }

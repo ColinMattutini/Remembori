@@ -1,79 +1,54 @@
 import React, { Fragment, useEffect } from "react";
 import { useState } from "react";
-import IndividualFlashcard from "./IndividualFlashcard";
+import { useNavigate } from "react-router-dom";
 import classes from "./FlashCardForm.module.css";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 
 const FlashCardForm = () => {
-  const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("");
-  const [cardSet, setCardSet] = useState([]);
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1);
+  const [cardSet, setCardSet] = useState([{ question: "", answer: "" }]);
   const [title, setTitle] = useState("");
 
-  const answerHandler = (e) => {
-    setAnswer(e.target.value);
-  };
-
-  const questionHandler = (e) => {
-    setQuestion(e.target.value);
-  };
+  const nav = useNavigate();
 
   const titleHandler = (e) => {
     setTitle(e.target.value);
   };
 
-  const submitCard = () => {
-    setCardSet((cardSet) => [
-      ...cardSet,
+  const cardHandler = (index, field, event) => {
+    const newValue = event.target.value;
+    setCardSet([
+      ...cardSet.slice(0, index),
       {
-        key: counter,
-        counter: counter,
-        question: question,
-        answer: answer,
+        ...cardSet[index],
+        [field]: newValue,
       },
+      ...cardSet.slice(index + 1),
     ]);
-    setCounter(counter + 1);
-    setAnswer("");
-    setQuestion("");
   };
 
-  const submitSet = async () => {
-    for (const item in cardSet) {
-      const response = await fetch("placeholderforAPIgateway", {
-        method: "POST",
-        body: JSON.stringify({
-          id: cardSet[item].counter,
-          title: title,
-          question: cardSet[item].question,
-          answer: cardSet[item].answer,
-        }),
-        headers: { "Content-Type": "application/json" },
-      });
-      if (response.ok) {
-        console.log("Success saving card " + counter);
-      }
-    }
-  };
+  useEffect(() => {}, [counter]);
 
   const saveSet = () => {
-    localStorage.setItem(title, JSON.stringify(cardSet));
-    console.log("Successfully saved!");
+    let blankSet = cardSet.filter((item) => item.question);
+    setCardSet(blankSet);
+    let trimTitle = title.trim();
+    localStorage.setItem(trimTitle, JSON.stringify(blankSet));
+    nav("/review/" + trimTitle);
   };
 
-  const flashCardSet = cardSet.map((cards) => (
-    <IndividualFlashcard
-      counter={cards.counter}
-      question={cards.question}
-      answer={cards.answer}
-    />
-  ));
+  const addCardHandler = () => {
+    let temp = { question: "", answer: "" };
+    let test = cardSet.concat(temp);
+    setCardSet(test);
+  };
 
-  const printSet = () => {
-    for (const item in cardSet) {
-      console.log(cardSet[item].counter);
-      console.log(cardSet[item].question);
-      console.log(cardSet[item].answer);
-    }
+  const removeCardHandler = () => {
+    let temp = cardSet.pop();
+    let test = cardSet;
+    setCardSet(test);
+    setCounter(counter - 1);
   };
 
   return (
@@ -85,16 +60,36 @@ const FlashCardForm = () => {
         </div>
         <input onChange={titleHandler} />
       </div>
-      <div>
-        <h1>Question</h1>
-        <input onChange={questionHandler} value={question}></input>
-        <h1>Answer</h1>
-        <input onChange={answerHandler} value={answer}></input>
-        <div className={classes.spacer}>
-          <button onClick={submitCard}>Add Card</button>
-        </div>
+      <form>
+        {cardSet.map((card, index) => (
+          <div className={classes.spacer} key={index}>
+            <h2>Question</h2>
+            <input
+              key={index}
+              type="text"
+              onChange={cardHandler.bind(this, index, "question")}
+            ></input>
+            <h2>Answer</h2>
+            <input
+              type="text"
+              onChange={cardHandler.bind(this, index, "answer")}
+            ></input>
+          </div>
+        ))}
+      </form>
+      <div className={classes.footer}>
+        <AddCircleOutlineIcon
+          className={classes.iconSizing}
+          fontSize="medium"
+          onClick={addCardHandler}
+        />
+
+        <RemoveCircleOutlineIcon
+          className={classes.iconSizing}
+          fontSize="medium"
+          onClick={removeCardHandler}
+        />
       </div>
-      {flashCardSet}
     </Fragment>
   );
 };
