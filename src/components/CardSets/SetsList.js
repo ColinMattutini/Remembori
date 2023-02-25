@@ -9,7 +9,11 @@ const SetsList = () => {
     <IndividualSets name={setNames} />
   ));
 
-  return <div className={classes.cardWrap}>{individualSetCards}</div>;
+  return (
+    <div>
+      <div className={classes.cardWrap}>{individualSetCards}</div>
+    </div>
+  );
 };
 
 export default SetsList;

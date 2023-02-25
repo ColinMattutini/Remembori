@@ -12,6 +12,13 @@
   border-radius: 14px;
   background-color: rgb(255, 255, 255);
   margin: auto;
+  overflow: scroll;
+  scrollbar-width: none;
+  background-image: none;
+}
+
+.mainbackground::-webkit-scrollbar {
+  display: none;
 }
 
 @media screen and (max-width: 540px) {

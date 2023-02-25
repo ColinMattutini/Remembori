@@ -4,7 +4,6 @@ import classes from "./IndividualSet.module.css";
 
 const IndividualSets = (props) => {
   const nav = useNavigate();
-  const [name, setName] = useState(Object.keys(localStorage));
 
   const navHandler = () => {
     nav("/review/" + props.name);
