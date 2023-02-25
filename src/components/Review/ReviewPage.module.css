@@ -14,6 +14,22 @@
   margin: auto;
 }
 
+.headerButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.backButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.backButton button {
+  height: 50%;
+}
+
 @media screen and (max-width: 540px) {
   .mainbackground {
     width: 100%;
