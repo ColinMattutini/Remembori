@@ -1,0 +1,37 @@
+.buttonAlign {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 4px;
+}
+
+.submitAdjust {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  transform: scale(1.4);
+  padding-right: 2%;
+  cursor: pointer;
+}
+
+.backbutton {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.formPad {
+  padding-top: 32px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  padding-top: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconSizing {
+  transform: scale(2);
+  cursor: pointer;
+}
