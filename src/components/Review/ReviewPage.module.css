@@ -10,7 +10,8 @@
   width: 40%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   border-radius: 14px;
-  background-color: rgb(255, 255, 255);
+  /* background-color: rgb(255, 255, 255); */
+  background-color: #d5bdaf;
   margin: auto;
 }
 
@@ -24,6 +25,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: scale(1.2);
+  cursor: pointer;
 }
 
 .backButton button {

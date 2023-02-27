@@ -8,7 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useState } from "react";
 import { Fragment } from "react";
-import Modal from "../UI/Modal";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import DeleteModal from "../DeleteSet/DeleteModal";
 
 const ITEM_HEIGHT = 48;
@@ -53,7 +53,7 @@ const ReviewPage = () => {
         <div className={classes.mainbackground}>
           <div className={classes.headerButtons}>
             <div className={classes.backButton}>
-              <button onClick={returnHandler}>Back</button>
+              <ArrowBackIcon onClick={returnHandler} />
             </div>
             <div className={classes.menuRight}>
               <IconButton

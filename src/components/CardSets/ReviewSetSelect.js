@@ -4,8 +4,6 @@ import classes from "./ReviewSetSelect.module.css";
 import SetsList from "./SetsList";
 
 const ReviewSetSelect = () => {
-  const [reviewSet, setReviewSet] = useState(Object.keys(localStorage));
-
   const nav = useNavigate();
 
   const backButtonHandler = () => {
@@ -13,10 +11,9 @@ const ReviewSetSelect = () => {
   };
 
   return (
-    <div>
-      <div className={classes.homepage}>
-        <div className={classes.mainbackground}>
-          <button onClick={backButtonHandler}>Back</button>
+    <div className={classes.homepage}>
+      <div className={classes.mainbackground}>
+        <div className={classes.alignment}>
           <SetsList />
         </div>
       </div>
