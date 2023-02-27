@@ -11,16 +11,20 @@
   display: none;
 }
 
+.buttonAlign {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 4px;
+}
+
 .submitAdjust {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-
-.submitAdjust button {
-  width: 40%;
-  border-radius: 8px;
-  background-color: #50fc4a;
+  transform: scale(1.4);
+  padding-right: 2%;
+  cursor: pointer;
 }
 
 input {
@@ -29,6 +33,7 @@ input {
   padding: 12px 20px;
   box-sizing: border-box;
   margin: 8px 0;
+  background-color: #e3d5ca;
 }
 
 h2 {
@@ -62,4 +67,14 @@ h2 {
 .iconSizing {
   transform: scale(2);
   cursor: pointer;
+}
+
+.backbutton {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.title {
+  padding-top: 32px;
+  padding-bottom: 4px;
 }

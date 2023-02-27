@@ -13,9 +13,6 @@ const FlashCard = () => {
   return (
     <div className={classes.homepage}>
       <div className={classes.mainbackground}>
-        <div className={classes.backbutton}>
-          <button onClick={returnHandler}>Back</button>
-        </div>
         <FlashCardForm />
       </div>
     </div>

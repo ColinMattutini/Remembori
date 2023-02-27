@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import classes from "./FlashCardForm.module.css";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const FlashCardForm = () => {
   const [counter, setCounter] = useState(1);
@@ -11,6 +13,10 @@ const FlashCardForm = () => {
   const [title, setTitle] = useState("");
 
   const nav = useNavigate();
+
+  const returnHandler = () => {
+    nav("/");
+  };
 
   const titleHandler = (e) => {
     setTitle(e.target.value);
@@ -54,13 +60,20 @@ const FlashCardForm = () => {
   return (
     <Fragment>
       <div>
-        <div className={classes.submitAdjust}>
-          <h1>Flashcard Set Title</h1>
-          <button onClick={saveSet}>Save Set</button>
+        <div className={classes.buttonAlign}>
+          <div className={classes.backbutton}>
+            <ArrowBackIcon onClick={returnHandler} />
+          </div>
+          <div className={classes.submitAdjust}>
+            <CheckCircleIcon onClick={saveSet} />
+          </div>
         </div>
-        <input onChange={titleHandler} />
       </div>
       <form>
+        <div className={classes.title}>
+          <h2>Set Title</h2>
+          <input type="text" onChange={titleHandler} />
+        </div>
         {cardSet.map((card, index) => (
           <div className={classes.spacer} key={index}>
             <h2>Question</h2>
@@ -83,7 +96,6 @@ const FlashCardForm = () => {
           fontSize="medium"
           onClick={addCardHandler}
         />
-
         <RemoveCircleOutlineIcon
           className={classes.iconSizing}
           fontSize="medium"
