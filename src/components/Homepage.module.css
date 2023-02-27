@@ -10,7 +10,8 @@
   width: 40%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   border-radius: 14px;
-  background-color: rgb(255, 255, 255);
+  /* background-color: rgb(255, 255, 255); */
+  background-color: #d5bdaf;
   margin: auto;
 }
 
@@ -26,6 +27,7 @@
 
 .buttonstack button {
   padding: 1rem;
+  background-color: #e3d5ca;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   font-size: larger;
@@ -34,6 +36,33 @@
 
 .buttonstack button:active {
   background-color: antiquewhite;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  padding: 1rem;
+
+  width: 100%;
+  height: 25vh;
+
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 14px;
+
+  text-align: center;
+  font-size: 24px;
+  /* background-color: rgb(255, 255, 255); */
+  background-color: #f5ebe0;
+  margin: auto;
+  cursor: pointer;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.swiperAdjust {
+  margin-top: 35%;
 }
 
 @media screen and (max-width: 540px) {

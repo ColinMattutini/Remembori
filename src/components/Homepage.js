@@ -3,9 +3,16 @@ import { useNavigate } from "react-router-dom";
 import FlashCard from "./FlashCard/FlashCard";
 import classes from "./Homepage.module.css";
 import ReviewPage from "./Review/ReviewPage";
+import { Navigation, Pagination, Virtual } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/virtual";
 
 const Homepage = () => {
   const nav = useNavigate();
+
+  const [name, setName] = useState(Object.keys(localStorage));
 
   const createHandler = () => {
     nav("/createset");
@@ -13,6 +20,10 @@ const Homepage = () => {
 
   const reviewHandler = () => {
     nav("/reviewset");
+  };
+
+  const setNavHandler = (set) => {
+    nav("/review/" + set);
   };
 
   return (
@@ -23,6 +34,26 @@ const Homepage = () => {
             <button onClick={createHandler}>Create FlashCard Set</button>
             <button onClick={reviewHandler}>Review Flashcards</button>
           </div>
+        </div>
+        <div className={classes.swiperAdjust}>
+          <Swiper
+            navigation={true}
+            modules={[Virtual, Navigation]}
+            spaceBetween={25}
+            virtual
+            centeredSlides={true}
+            slidesPerView={1.2}
+          >
+            {name.map((slideContent, index) => (
+              <SwiperSlide
+                key={slideContent}
+                virtualIndex={index}
+                onClick={() => setNavHandler(slideContent)}
+              >
+                <div className={classes.card}>{slideContent}</div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </div>
