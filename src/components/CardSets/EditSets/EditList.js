@@ -5,23 +5,19 @@ import IndividualEdit from "./IndividualEdit";
 
 const EditList = () => {
   let pathName = window.location.pathname.split("/").pop();
-  pathName = pathName.replace("%20", " ");
+  pathName = pathName.replaceAll("%20", " ");
 
   const nav = useNavigate();
 
   const submitTest = (cards) => {
     cards = cards.filter((item) => item.question);
     localStorage.setItem(pathName, JSON.stringify(cards));
-  };
-
-  const backHandler = () => {
     nav("/review/" + pathName);
   };
 
   return (
     <div className={classes.homepage}>
       <div className={classes.mainbackground}>
-        <button onClick={backHandler}>Back</button>
         <IndividualEdit submitTest={submitTest} />
       </div>
     </div>
