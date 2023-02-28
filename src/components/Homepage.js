@@ -30,9 +30,14 @@ const Homepage = () => {
     <div className={classes.homepage}>
       <div className={classes.mainbackground}>
         <div className={classes.alignment}>
-          <div className={classes.buttonstack}>
-            <button onClick={createHandler}>Create FlashCard Set</button>
-            <button onClick={reviewHandler}>Review Flashcards</button>
+          <div className={classes.header}>
+            <h2>Remembori</h2>
+          </div>
+        </div>
+        <div className={classes.midSection}>
+          <div className={classes.reviewButton}>
+            <h2>Your Sets:</h2>
+            <button onClick={reviewHandler}>View All</button>
           </div>
         </div>
         <div className={classes.swiperAdjust}>
@@ -54,6 +59,9 @@ const Homepage = () => {
               </SwiperSlide>
             ))}
           </Swiper>
+        </div>
+        <div className={classes.buttonstack}>
+          <button onClick={createHandler}>Create New Set</button>
         </div>
       </div>
     </div>
