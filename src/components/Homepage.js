@@ -14,6 +14,13 @@ const Homepage = () => {
 
   const [name, setName] = useState(Object.keys(localStorage));
 
+  let termLength = [];
+
+  for (let i = 0; i < name.length; i++) {
+    termLength.push(JSON.parse(localStorage.getItem(name[i])).length);
+    console.log(termLength);
+  }
+
   const createHandler = () => {
     nav("/createset");
   };
@@ -55,7 +62,10 @@ const Homepage = () => {
                 virtualIndex={index}
                 onClick={() => setNavHandler(slideContent)}
               >
-                <div className={classes.card}>{slideContent}</div>
+                <div className={classes.card}>
+                  <div className={classes.title}>{slideContent}</div>
+                  <div className={classes.terms}>{termLength[index]} Cards</div>
+                </div>
               </SwiperSlide>
             ))}
           </Swiper>

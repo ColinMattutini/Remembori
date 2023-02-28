@@ -81,9 +81,10 @@
 
 .card {
   display: flex;
+
+  flex-direction: column;
   justify-content: center;
   align-content: center;
-  flex-direction: column;
   padding: 1rem;
 
   width: 100%;
@@ -101,6 +102,25 @@
   cursor: pointer;
   word-wrap: break-word;
   overflow: hidden;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+
+.terms {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  justify-content: center;
+  margin: auto;
+  background-color: #6c757c;
+  border-radius: 14px;
+  width: 40%;
+  font-size: large;
 }
 
 @media screen and (max-width: 540px) {
