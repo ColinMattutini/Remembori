@@ -9,7 +9,9 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const FlashCardForm = () => {
   const [counter, setCounter] = useState(1);
-  const [cardSet, setCardSet] = useState([{ question: "", answer: "" }]);
+  const [cardSet, setCardSet] = useState([
+    { question: "", answer: "", favorite: false, knowIt: "" },
+  ]);
   const [title, setTitle] = useState("");
 
   const nav = useNavigate();
@@ -45,7 +47,7 @@ const FlashCardForm = () => {
   };
 
   const addCardHandler = () => {
-    let temp = { question: "", answer: "" };
+    let temp = { question: "", answer: "", favorite: false, knowIt: "" };
     let test = cardSet.concat(temp);
     setCardSet(test);
   };
