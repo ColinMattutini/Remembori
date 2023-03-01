@@ -4,12 +4,6 @@ import classes from "./ReviewSetSelect.module.css";
 import SetsList from "./SetsList";
 
 const ReviewSetSelect = () => {
-  const nav = useNavigate();
-
-  const backButtonHandler = () => {
-    nav("/");
-  };
-
   return (
     <div className={classes.homepage}>
       <div className={classes.mainbackground}>
