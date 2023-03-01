@@ -33,6 +33,29 @@
   height: 50%;
 }
 
+.buttonstack {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-top: 48px;
+  width: 60%;
+  margin: auto;
+  font-size: larger;
+}
+
+.buttonstack button {
+  padding: 1rem;
+  background-color: #dee2e6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  font-size: larger;
+  cursor: pointer;
+}
+
+.buttonstack button:active {
+  background-color: antiquewhite;
+}
+
 @media screen and (max-width: 540px) {
   .mainbackground {
     width: 100%;

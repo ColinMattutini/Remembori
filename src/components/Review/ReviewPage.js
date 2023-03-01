@@ -31,8 +31,11 @@ const ReviewPage = () => {
   };
 
   const editNavHandler = () => {
-    console.log(pathName);
     nav("/edit/" + pathName);
+  };
+
+  const reviewModeNavHandler = () => {
+    nav("/reviewmode/" + pathName);
   };
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -91,6 +94,9 @@ const ReviewPage = () => {
             </div>
           </div>
           <ReviewCard />
+          <div className={classes.buttonstack}>
+            <button onClick={reviewModeNavHandler}>Review Mode</button>
+          </div>
         </div>
       </div>
     </Fragment>

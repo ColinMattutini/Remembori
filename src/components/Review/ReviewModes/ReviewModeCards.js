@@ -3,7 +3,7 @@ import { useLayoutEffect } from "react";
 import { useEffect } from "react";
 import classes from "./ReviewModeCards.module.css";
 
-const ReviewModeCards = () => {
+const ReviewModeCards = (props) => {
   let pathName = window.location.pathname.split("/").pop();
   pathName = pathName.replaceAll("%20", " ");
 
@@ -51,29 +51,65 @@ const ReviewModeCards = () => {
   };
 
   const knowItHandler = () => {
-    let temp = "Know It";
-    let questionFind = shuffledSet[cardIndex].question;
-    console.log(questionFind);
-    let originalIndex = reviewSet.findIndex((x) => x.question === questionFind);
-    console.log(originalIndex);
-    reviewSet[originalIndex].knowIt = temp;
-    console.log(reviewSet);
+    if (cardIndex < shuffledSet.length - 1) {
+      let temp = "Know It";
+      let questionFind = shuffledSet[cardIndex].question;
+      console.log(questionFind);
+      let originalIndex = reviewSet.findIndex(
+        (x) => x.question === questionFind
+      );
+      console.log(originalIndex);
+      reviewSet[originalIndex].knowIt = temp;
+      console.log(reviewSet);
 
-    localStorage.setItem(pathName, JSON.stringify(reviewSet));
-    setCardIndex(cardIndex + 1);
+      localStorage.setItem(pathName, JSON.stringify(reviewSet));
+      setCardIndex(cardIndex + 1);
+    } else if (cardIndex === shuffledSet.length - 1) {
+      let temp = "Know It";
+      let questionFind = shuffledSet[cardIndex].question;
+      console.log(questionFind);
+      let originalIndex = reviewSet.findIndex(
+        (x) => x.question === questionFind
+      );
+      console.log(originalIndex);
+      reviewSet[originalIndex].knowIt = temp;
+      console.log(reviewSet);
+
+      localStorage.setItem(pathName, JSON.stringify(reviewSet));
+      setCardIndex(cardIndex + 1);
+      props.reviewHandler();
+    }
   };
 
   const dontKnowItHandler = () => {
-    let temp = "Don't Know It";
-    let questionFind = shuffledSet[cardIndex].question;
-    console.log(questionFind);
-    let originalIndex = reviewSet.findIndex((x) => x.question === questionFind);
-    console.log(originalIndex);
-    reviewSet[originalIndex].knowIt = temp;
-    console.log(reviewSet);
+    if (cardIndex < shuffledSet.length - 1) {
+      let temp = "Don't Know It";
+      let questionFind = shuffledSet[cardIndex].question;
+      console.log(questionFind);
+      let originalIndex = reviewSet.findIndex(
+        (x) => x.question === questionFind
+      );
+      console.log(originalIndex);
+      reviewSet[originalIndex].knowIt = temp;
+      console.log(reviewSet);
 
-    localStorage.setItem(pathName, JSON.stringify(reviewSet));
-    setCardIndex(cardIndex + 1);
+      localStorage.setItem(pathName, JSON.stringify(reviewSet));
+      setCardIndex(cardIndex + 1);
+    } else if (cardIndex === shuffledSet.length - 1) {
+      let temp = "Don't Know It";
+      let questionFind = shuffledSet[cardIndex].question;
+      console.log(questionFind);
+      let originalIndex = reviewSet.findIndex(
+        (x) => x.question === questionFind
+      );
+      console.log(originalIndex);
+      reviewSet[originalIndex].knowIt = temp;
+      console.log(reviewSet);
+
+      localStorage.setItem(pathName, JSON.stringify(reviewSet));
+      setCardIndex(cardIndex + 1);
+      props.reviewHandler();
+    }
   };
 
   useMemo(() => {
