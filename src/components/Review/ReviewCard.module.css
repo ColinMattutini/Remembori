@@ -4,20 +4,31 @@
   text-align: center;
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrapper button {
+  background-color: #6c757c;
+  border: none;
+  cursor: pointer;
+}
+
 .card {
   display: flex;
   justify-content: center;
   align-content: center;
   flex-direction: column;
   padding: 1rem;
-  width: 95%;
+  width: 85%;
   height: 35vh;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.75);
   border-radius: 14px;
   /* background-color: rgb(255, 255, 255); */
   background-color: #dee2e6;
   margin: auto;
-  cursor: pointer;
+
   word-wrap: break-word;
   overflow: hidden;
 }
@@ -40,4 +51,25 @@
 
 .backbutton {
   float: left;
+}
+
+.iconSizing {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: auto;
+  margin-left: auto;
+  align-items: right;
+  justify-content: right;
+  transform: scale(1.4);
+  cursor: pointer;
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding-bottom: 24px;
+  cursor: pointer;
 }
