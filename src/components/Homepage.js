@@ -15,10 +15,16 @@ const Homepage = () => {
   const [name, setName] = useState(Object.keys(localStorage));
 
   let termLength = [];
+  let blankSets = false;
 
   for (let i = 0; i < name.length; i++) {
     termLength.push(JSON.parse(localStorage.getItem(name[i])).length);
-    console.log(termLength);
+  }
+
+  if (name.length === 0) {
+    blankSets = true;
+  } else {
+    blankSets = false;
   }
 
   const createHandler = () => {
@@ -48,6 +54,7 @@ const Homepage = () => {
           </div>
         </div>
         <div className={classes.swiperAdjust}>
+          {blankSets && <h1>No Sets Currently</h1>}
           <Swiper
             navigation={true}
             modules={[Virtual, Navigation]}
