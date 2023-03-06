@@ -27,8 +27,8 @@ const ReviewModeCards = (props) => {
       newCards[i] = newCards[j];
       newCards[j] = holder;
     }
-    console.log(newCards);
-    setShuffledSet(newCards);
+
+    setShuffledSet(newCards.slice());
   };
 
   const showAnswerHandler = () => {
@@ -54,26 +54,24 @@ const ReviewModeCards = (props) => {
     if (cardIndex < shuffledSet.length - 1) {
       let temp = "Know It";
       let questionFind = shuffledSet[cardIndex].question;
-      console.log(questionFind);
+
       let originalIndex = reviewSet.findIndex(
         (x) => x.question === questionFind
       );
-      console.log(originalIndex);
+
       reviewSet[originalIndex].knowIt = temp;
-      console.log(reviewSet);
 
       localStorage.setItem(pathName, JSON.stringify(reviewSet));
       setCardIndex(cardIndex + 1);
     } else if (cardIndex === shuffledSet.length - 1) {
       let temp = "Know It";
       let questionFind = shuffledSet[cardIndex].question;
-      console.log(questionFind);
+
       let originalIndex = reviewSet.findIndex(
         (x) => x.question === questionFind
       );
-      console.log(originalIndex);
+
       reviewSet[originalIndex].knowIt = temp;
-      console.log(reviewSet);
 
       localStorage.setItem(pathName, JSON.stringify(reviewSet));
       setCardIndex(cardIndex + 1);
@@ -85,26 +83,24 @@ const ReviewModeCards = (props) => {
     if (cardIndex < shuffledSet.length - 1) {
       let temp = "Don't Know It";
       let questionFind = shuffledSet[cardIndex].question;
-      console.log(questionFind);
+
       let originalIndex = reviewSet.findIndex(
         (x) => x.question === questionFind
       );
-      console.log(originalIndex);
+
       reviewSet[originalIndex].knowIt = temp;
-      console.log(reviewSet);
 
       localStorage.setItem(pathName, JSON.stringify(reviewSet));
       setCardIndex(cardIndex + 1);
     } else if (cardIndex === shuffledSet.length - 1) {
       let temp = "Don't Know It";
       let questionFind = shuffledSet[cardIndex].question;
-      console.log(questionFind);
+
       let originalIndex = reviewSet.findIndex(
         (x) => x.question === questionFind
       );
-      console.log(originalIndex);
+
       reviewSet[originalIndex].knowIt = temp;
-      console.log(reviewSet);
 
       localStorage.setItem(pathName, JSON.stringify(reviewSet));
       setCardIndex(cardIndex + 1);
@@ -113,17 +109,18 @@ const ReviewModeCards = (props) => {
   };
 
   useMemo(() => {
-    shuffleCards(shuffledSet);
-    console.log("Shuffled.");
-    console.log(shuffledSet);
-    console.log(reviewSet);
+    if (props.reviewWrong === true) {
+      let newShuffled = shuffledSet.filter((e) => e.knowIt === "Don't Know It");
+      shuffleCards(newShuffled);
+    }
+    // shuffleCards(shuffledSet);
   }, []);
 
   return (
     <div>
       <div className={classes.textalign}>
         <h1>
-          {cardIndex + 1}/{reviewSet.length}
+          {cardIndex + 1}/{shuffledSet.length}
         </h1>
 
         <div className={classes.card}>

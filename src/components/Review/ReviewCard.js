@@ -43,7 +43,6 @@ const ReviewCard = () => {
     if (cardIndex > 0) {
       setCardIndex(cardIndex - 1);
       setShowAnswer(false);
-      console.log(favorited);
     }
   };
 
@@ -59,20 +58,17 @@ const ReviewCard = () => {
     favoriteChecker();
 
     reviewSet[cardIndex].favorite ? (temp = false) : (temp = true);
-    console.log(temp);
+
     setFavorited(temp);
     reviewSet[cardIndex].favorite = temp;
-    console.log("Second Console log " + reviewSet[cardIndex].favorite);
+
     setReviewSet(reviewSet);
 
     localStorage.setItem(pathName, JSON.stringify(reviewSet));
   };
 
   useEffect(() => {
-    // testHandler();
     favoriteChecker();
-
-    console.log("Use Effect: " + favorited);
   }, [cardIndex, temp]);
 
   return (

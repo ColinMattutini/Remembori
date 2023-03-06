@@ -21,7 +21,6 @@ const IndividualEdit = (props) => {
   const addCard = () => {
     let temp = { question: "", answer: "" };
     setCards(cards.concat(temp));
-    console.log(cards);
   };
 
   const cardHandler = (index, field, event) => {
