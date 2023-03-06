@@ -11,9 +11,18 @@ const ReviewMode = () => {
   pathName = pathName.replaceAll("%20", " ");
 
   const [review, setReview] = useState(false);
+  const [reviewWrong, setReviewWrong] = useState(false);
 
   const reviewHandler = () => {
     review ? setReview(false) : setReview(true);
+  };
+
+  const reviewWrongHandler = () => {
+    setReviewWrong(true);
+  };
+
+  const flipReviewWrongHandler = () => {
+    setReviewWrong(false);
   };
 
   const nav = useNavigate();
@@ -28,8 +37,19 @@ const ReviewMode = () => {
         <div className={classes.backButton} onClick={backNavHandler}>
           <ArrowBackIcon />
         </div>
-        {!review && <ReviewModeCards reviewHandler={reviewHandler} />}
-        {review && <ReviewModeStats />}
+        {!review && (
+          <ReviewModeCards
+            reviewHandler={reviewHandler}
+            reviewWrong={reviewWrong}
+          />
+        )}
+        {review && (
+          <ReviewModeStats
+            reviewWrongHandler={reviewWrongHandler}
+            reviewHandler={reviewHandler}
+            flipReviewWrongHandler={flipReviewWrongHandler}
+          />
+        )}
       </div>
     </div>
   );
