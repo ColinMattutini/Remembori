@@ -6,6 +6,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import IconButton from "@mui/material/IconButton";
 
 const FlashCardForm = () => {
   const [counter, setCounter] = useState(1);
@@ -38,7 +39,8 @@ const FlashCardForm = () => {
 
   useEffect(() => {}, [counter]);
 
-  const saveSet = () => {
+  const saveSet = (e) => {
+    e.preventDefault();
     let blankSet = cardSet.filter((item) => item.question);
     setCardSet(blankSet);
     let trimTitle = title.trim();
@@ -61,20 +63,23 @@ const FlashCardForm = () => {
 
   return (
     <Fragment>
-      <div>
-        <div className={classes.buttonAlign}>
-          <div className={classes.backbutton}>
-            <ArrowBackIcon onClick={returnHandler} />
-          </div>
-          <div className={classes.submitAdjust}>
-            <CheckCircleIcon onClick={saveSet} />
+      <form onSubmit={saveSet}>
+        <div>
+          <div className={classes.buttonAlign}>
+            <div className={classes.backbutton}>
+              <ArrowBackIcon onClick={returnHandler} />
+            </div>
+            <div className={classes.submitAdjust}>
+              <button>
+                <CheckCircleIcon />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      <form>
+
         <div className={classes.title}>
           <h2>Set Title</h2>
-          <input type="text" onChange={titleHandler} />
+          <input required type="text" onChange={titleHandler} />
         </div>
         {cardSet.map((card, index) => (
           <div className={classes.spacer} key={index}>
