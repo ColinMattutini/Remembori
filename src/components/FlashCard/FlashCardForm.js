@@ -79,7 +79,15 @@ const FlashCardForm = () => {
 
         <div className={classes.title}>
           <h2>Set Title</h2>
-          <input required type="text" onChange={titleHandler} />
+          <input
+            required
+            type="text"
+            onChange={titleHandler}
+            onInvalid={(e) =>
+              e.target.setCustomValidity("Please Enter a Title")
+            }
+            onInput={(e) => e.target.setCustomValidity("")}
+          />
         </div>
         {cardSet.map((card, index) => (
           <div className={classes.spacer} key={index}>
