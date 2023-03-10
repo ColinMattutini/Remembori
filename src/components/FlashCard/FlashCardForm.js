@@ -11,7 +11,7 @@ import IconButton from "@mui/material/IconButton";
 const FlashCardForm = () => {
   const [counter, setCounter] = useState(1);
   const [cardSet, setCardSet] = useState([
-    { question: "", answer: "", favorite: false, knowIt: "" },
+    { question: " ", answer: " ", favorite: false, knowIt: "" },
   ]);
   const [title, setTitle] = useState("");
 
@@ -49,7 +49,7 @@ const FlashCardForm = () => {
   };
 
   const addCardHandler = () => {
-    let temp = { question: "", answer: "", favorite: false, knowIt: "" };
+    let temp = { question: " ", answer: " ", favorite: false, knowIt: "" };
     let test = cardSet.concat(temp);
     setCardSet(test);
   };
