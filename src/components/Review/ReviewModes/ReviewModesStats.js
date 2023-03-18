@@ -48,7 +48,7 @@ const ReviewModeStats = (props) => {
   return (
     <div>
       <div className={classes.card}>
-        <h1>Stats</h1>
+        <h1>Summary</h1>
         <h1>Know It: {correctCount}</h1>
         <h1>Don't Know It: {incorrectCount}</h1>
         {knowAll && <h1>Congrats!</h1>}
