@@ -7,6 +7,12 @@
 body {
   margin: 0;
   /* background-color: #d6ccc2; */
-  background-color: #212529;
+  /* background-color: #212529; */
+  background: linear-gradient(
+    white 0%,
+    rgb(150, 212, 212) 35%,
+    rgb(150, 212, 212) 35%,
+    white 100%
+  );
   font-family: "Inter", inter;
 }

@@ -13,21 +13,28 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   border-radius: 14px;
   /* background-color: #d5bdaf; */
-  background-color: #6c757c;
+  /* background-color: #6c757c; */
+  background: linear-gradient(
+    white 0%,
+    rgb(186, 248, 248) 40%,
+    rgb(186, 248, 248) 60%,
+    white 100%
+  );
   margin: auto;
 }
 
 .header {
   display: flex;
   flex-direction: column;
-  box-shadow: 0 2px 16px rgba(0, 0, 1, 1);
-  border-radius: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0.5, 0.5);
+  border-radius: 40px;
   height: auto;
   width: 100%;
   text-align: center;
   font-family: "Pacifico", cursive;
   font-size: x-large;
-  background-color: #dee2e6;
+  /* background-color: #dee2e6; */
+  background-color: white;
 }
 
 .alignment {
@@ -39,22 +46,23 @@
   flex-direction: column;
   gap: 32px;
   padding-top: 48px;
-  width: 60%;
+  width: 30%;
   margin: auto;
   font-size: larger;
 }
 
 .buttonstack button {
   padding: 1rem;
-  background-color: #dee2e6;
+  /* background-color: #dee2e6; */
+  background-color: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
+  border-radius: 36px;
   font-size: larger;
   cursor: pointer;
 }
 
 .buttonstack button:active {
-  background-color: antiquewhite;
+  background-color: rgb(206, 212, 207);
 }
 
 .midSection {
@@ -72,7 +80,7 @@
 }
 
 .reviewButton button {
-  background-color: #6c757c;
+  background: rgb(186, 248, 248);
   border: none;
   font-size: large;
   cursor: pointer;
@@ -97,7 +105,7 @@
   font-size: 42px;
   /* background-color: rgb(255, 255, 255); */
   /* background-color: #f5ebe0; */
-  background-color: #dee2e6;
+  background-color: #ffffff;
   margin: auto;
   cursor: pointer;
   word-wrap: break-word;
@@ -125,6 +133,11 @@
 
 @media screen and (max-width: 540px) {
   .mainbackground {
-    width: 100%;
+    width: 90%;
+    height: 100vh;
+  }
+
+  .buttonstack {
+    width: 80%;
   }
 }
