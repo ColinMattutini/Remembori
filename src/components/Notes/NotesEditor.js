@@ -142,7 +142,10 @@ const MenuBar = ({ editor }) => {
 };
 
 const NotesEditor = () => {
-  const [text, setText] = useState(JSON.parse(localStorage.getItem("text")));
+  let pathName = window.location.pathname.split("/").pop();
+  pathName = pathName.replaceAll("%20", " ");
+
+  const [text, setText] = useState(JSON.parse(localStorage.getItem(pathName)));
   const [cardState, setCardState] = useState(false);
 
   const nav = useNavigate();
@@ -166,7 +169,7 @@ const NotesEditor = () => {
   const saveText = () => {
     let json = editor.getJSON();
     json = JSON.stringify(json);
-    localStorage.setItem("text", json);
+    localStorage.setItem(pathName, json);
   };
 
   const checkHighlighted = () => {
