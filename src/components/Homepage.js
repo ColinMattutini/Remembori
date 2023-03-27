@@ -18,9 +18,11 @@ const Homepage = () => {
 
   let termLength = [];
   let blankSets = false;
+  console.log(fixName);
+  console.log(name);
 
-  for (let i = 0; i < name.length; i++) {
-    termLength.push(JSON.parse(localStorage.getItem(name[i])).length);
+  for (let i = 0; i < fixName.length; i++) {
+    termLength.push(JSON.parse(localStorage.getItem(fixName[i])).length);
   }
 
   if (name.length === 0) {
