@@ -41,10 +41,6 @@ const Homepage = () => {
     nav("/review/" + set);
   };
 
-  const notesHandler = () => {
-    nav("/notesedit");
-  };
-
   return (
     <div className={classes.homepage}>
       <div className={classes.mainbackground}>
@@ -53,7 +49,7 @@ const Homepage = () => {
             <h2>Remembori</h2>
           </div>
         </div>
-        <button onClick={notesHandler}>NOTES</button>
+
         <NotesSwiper />
         <div className={classes.midSection}>
           <div className={classes.reviewButton}>
