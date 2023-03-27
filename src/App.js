@@ -16,7 +16,7 @@ function App() {
       <Route exact path="/createset" element={<CreateSetPage />} />
       <Route exact path="/edit/:setName" element={<EditSetPage />} />
       <Route exact path="/reviewmode/:setName" element={<ReviewModePage />} />
-      <Route exact path="/notesedit" element={<NotesPage />} />
+      <Route exact path="/notesedit/:notesName" element={<NotesPage />} />
     </Routes>
   );
 }
