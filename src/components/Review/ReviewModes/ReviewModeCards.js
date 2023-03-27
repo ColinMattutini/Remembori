@@ -112,8 +112,10 @@ const ReviewModeCards = (props) => {
     if (props.reviewWrong === true) {
       let newShuffled = shuffledSet.filter((e) => e.knowIt === "Don't Know It");
       shuffleCards(newShuffled);
+    } else {
+      let newShuffled = shuffledSet;
+      shuffleCards(newShuffled);
     }
-    // shuffleCards(shuffledSet);
   }, []);
 
   return (
