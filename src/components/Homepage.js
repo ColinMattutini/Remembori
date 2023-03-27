@@ -8,11 +8,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/virtual";
+import NotesSwiper from "./NotesSwiper";
 
 const Homepage = () => {
   const nav = useNavigate();
 
   const [name, setName] = useState(Object.keys(localStorage));
+  let fixName = name.filter((e) => !e.includes("TXT NOTES "));
 
   let termLength = [];
   let blankSets = false;
@@ -52,6 +54,7 @@ const Homepage = () => {
           </div>
         </div>
         <button onClick={notesHandler}>NOTES</button>
+        <NotesSwiper />
         <div className={classes.midSection}>
           <div className={classes.reviewButton}>
             <h2>Your Sets:</h2>
@@ -68,7 +71,7 @@ const Homepage = () => {
             centeredSlides={true}
             slidesPerView={1.2}
           >
-            {name.map((slideContent, index) => (
+            {fixName.map((slideContent, index) => (
               <SwiperSlide
                 key={slideContent}
                 virtualIndex={index}
