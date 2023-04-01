@@ -19,6 +19,8 @@ const ReviewModeCards = (props) => {
 
   const [cardIndex, setCardIndex] = useState(0);
 
+  //Set new set of cards to shuffle order
+  //This is so the order of the initial set does not change
   const shuffleCards = (cards) => {
     let newCards = cards;
     for (var i = newCards.length - 1; i > 0; i--) {
