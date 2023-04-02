@@ -5,6 +5,7 @@ import { useState } from "react";
 import "./styles.css";
 import CardsTemplate from "./CardsTemplate";
 import { useNavigate } from "react-router-dom";
+import DropDownMenu from "./DropDownMenu";
 
 const MenuBar = ({ editor }) => {
   if (!editor) {
@@ -192,9 +193,10 @@ const NotesEditor = () => {
         <div className="header">
           <button onClick={backHandler}>Back</button>
           {!cardState && <MenuBar editor={editor} />}
-          <button onClick={saveText}>TEST</button>
+          <button onClick={saveText}>Save</button>
           <button onClick={checkHighlighted}>HIGHLIGHTED</button>
           <button onClick={cardStateHandler}>CREATE FLASHCARDS</button>
+
           {cardState && <CardsTemplate />}
         </div>
         <EditorContent editor={editor} />
