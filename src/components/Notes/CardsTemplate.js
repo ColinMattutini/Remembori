@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import DropDownMenu from "./DropDownMenu";
 
 const CardsTemplate = (props) => {
+  const [name, setName] = useState("");
+  const getSetName = (name) => {
+    setName(name);
+  };
+
   const [cardSet, setCardSet] = useState(
-    JSON.parse(localStorage.getItem("TEST TITLE"))
+    JSON.parse(localStorage.getItem(name))
   );
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
@@ -24,16 +30,20 @@ const CardsTemplate = (props) => {
   };
 
   const appendNewCard = () => {
-    let answer = window.getSelection().toString();
-    let temp = cardSet;
+    console.log(cardSet);
+    console.log(name);
+
+    //let answer = window.getSelection().toString();
+    let temp = JSON.parse(localStorage.getItem(name));
     temp.push({ question: question, answer: answer });
-    localStorage.setItem("TEST TITLE", JSON.stringify(temp));
+    localStorage.setItem(name, JSON.stringify(temp));
     setQuestion("");
     setAnswer("");
   };
 
   return (
     <div>
+      <DropDownMenu getSetName={getSetName} />
       <input onChange={questionInputHandler} value={question} />
       <input onChange={answerInputHandler} value={answer} />
       <button onClick={questionHandler}>Add Question </button>
