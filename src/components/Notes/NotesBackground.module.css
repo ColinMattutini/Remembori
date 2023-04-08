@@ -19,3 +19,10 @@
   scrollbar-width: none;
   background-image: none;
 }
+
+@media screen and (max-width: 540px) {
+  .mainbackground {
+    width: 100%;
+    height: 100vh;
+  }
+}
