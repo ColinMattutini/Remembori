@@ -9,12 +9,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/virtual";
 import NotesSwiper from "./NotesSwiper";
+import NewNoteTitleModal from "./NewNoteTitleModal";
 
 const Homepage = () => {
   const nav = useNavigate();
 
   const [name, setName] = useState(Object.keys(localStorage));
   let fixName = name.filter((e) => !e.includes("TXT NOTES "));
+
+  const [newSetState, setNewSetState] = useState(false);
 
   let termLength = [];
   let blankSets = false;
@@ -43,15 +46,22 @@ const Homepage = () => {
     nav("/review/" + set);
   };
 
+  const newNoteStateHandler = () => {
+    newSetState ? setNewSetState(false) : setNewSetState(true);
+  };
+
   return (
     <div className={classes.homepage}>
       <div className={classes.mainbackground}>
+        {newSetState && (
+          <NewNoteTitleModal newNoteStateHandler={newNoteStateHandler} />
+        )}
         <div className={classes.alignment}>
           <div className={classes.header}>
             <h2>Remembori</h2>
           </div>
         </div>
-
+        <button onClick={newNoteStateHandler}>Create New Set</button>
         <NotesSwiper />
         <div className={classes.midSection}>
           <div className={classes.reviewButton}>
