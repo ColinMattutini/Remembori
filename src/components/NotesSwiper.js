@@ -43,7 +43,6 @@ const NotesSwiper = () => {
           >
             <div className={classes.card}>
               <div className={classes.title}>{slideContent}</div>
-              <div className={classes.terms}>{termLength[index]} Cards</div>
             </div>
           </SwiperSlide>
         ))}
