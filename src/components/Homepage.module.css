@@ -8,7 +8,7 @@
 
 .mainbackground {
   padding: 1rem;
-  height: 85vh;
+  height: 100vh;
   width: 40%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   border-radius: 14px;
@@ -36,6 +36,22 @@
   /* background-color: #dee2e6; */
   background-color: white;
   margin-bottom: 5%;
+}
+
+.footer {
+  /* position: absolute; */
+  display: flex;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  margin-bottom: -1rem;
+  bottom: 0;
+
+  height: 9rem;
+  color: rgb(0, 0, 0);
+  align-items: center;
+
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25); */
+  /* z-index: 1; */
 }
 
 .alignment {
@@ -130,6 +146,11 @@
   border-radius: 14px;
   width: 40%;
   font-size: large;
+}
+
+.iconSizing {
+  transform: scale(3);
+  cursor: pointer;
 }
 
 @media screen and (max-width: 540px) {

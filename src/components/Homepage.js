@@ -5,11 +5,14 @@ import classes from "./Homepage.module.css";
 import ReviewPage from "./Review/ReviewPage";
 import { Navigation, Pagination, Virtual } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
 import "swiper/css";
 import "swiper/css/virtual";
 import NotesSwiper from "./NotesSwiper";
 import NewNoteTitleModal from "./NewNoteTitleModal";
+import AddButtonMenu from "./UI/AddButtonMenu";
+import FooterNavBar from "./UI/FooterNavBar";
 
 const Homepage = () => {
   const nav = useNavigate();
@@ -61,7 +64,7 @@ const Homepage = () => {
             <h2>Remembori</h2>
           </div>
         </div>
-        <button onClick={newNoteStateHandler}>Create New Set</button>
+
         <NotesSwiper />
         <div className={classes.midSection}>
           <div className={classes.reviewButton}>
@@ -93,8 +96,12 @@ const Homepage = () => {
             ))}
           </Swiper>
         </div>
-        <div className={classes.buttonstack}>
-          <button onClick={createHandler}>Create New Set</button>
+        <div className={classes.footer}>
+          <FooterNavBar
+            createHandler={createHandler}
+            newNoteStateHandler={newNoteStateHandler}
+            reviewHandler={reviewHandler}
+          />
         </div>
       </div>
     </div>
