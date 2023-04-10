@@ -13,7 +13,7 @@ const FooterNavBar = (props) => {
   const [value, setValue] = useState();
 
   return (
-    <div className={classes.hold}>
+    <div className={classes.navBar}>
       <Box sx={{ width: "100%" }}>
         <BottomNavigation
           sx={{ width: "100%" }}
