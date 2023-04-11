@@ -96,13 +96,6 @@ const Homepage = () => {
             ))}
           </Swiper>
         </div>
-        <div className={classes.footer}>
-          <FooterNavBar
-            createHandler={createHandler}
-            newNoteStateHandler={newNoteStateHandler}
-            reviewHandler={reviewHandler}
-          />
-        </div>
       </div>
     </div>
   );
