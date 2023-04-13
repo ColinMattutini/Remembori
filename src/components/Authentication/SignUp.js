@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import UserPool from "./UserPool";
+import classes from "./SignUp.module.css";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -26,17 +27,25 @@ const SignUp = () => {
 
   return (
     <div>
-      <form onSubmit={submitForm}>
-        <h1>Email</h1>
-        <input type={"text"} value={email} onChange={emailHandler} />
-        <h1>
+      <form onSubmit={submitForm} className={classes.login}>
+        <div className={classes.signupControl}>
+          <h1>Sign-Up</h1>
+
           <input
-            type={"password"}
-            value={password}
-            onChange={passwordHandler}
+            placeholder="Email"
+            type="email"
+            onChange={emailHandler}
+            required
           />
-        </h1>
-        <button>SUBMIT</button>
+
+          <input
+            type="password"
+            placeholder="Password: Enter 8 characters or more"
+            onChange={passwordHandler}
+            required
+          />
+        </div>
+        <button>Sign-Up</button>
       </form>
     </div>
   );
