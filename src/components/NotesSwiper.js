@@ -12,13 +12,14 @@ const NotesSwiper = () => {
   let termLength = [];
   let blankSets = false;
 
+  let tempName = name.filter((e) => !e.includes("Cognito" || "TXT NOTES"));
   let fixName = name.filter((e) => e.includes("TXT NOTES "));
   for (let i = 0; i < fixName.length; i++) {
     fixName[i] = fixName[i].replace("TXT NOTES ", "");
   }
 
-  for (let i = 0; i < name.length; i++) {
-    termLength.push(JSON.parse(localStorage.getItem(name[i])).length);
+  for (let i = 0; i < tempName.length; i++) {
+    termLength.push(JSON.parse(localStorage.getItem(tempName[i])).length);
   }
 
   const setNavHandler = (notes) => {

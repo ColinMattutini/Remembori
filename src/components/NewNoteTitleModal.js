@@ -17,6 +17,7 @@ const NewNoteTitleModal = (props) => {
       JSON.stringify({ type: "doc", content: [{ type: "paragraph" }] })
     );
     nav("/notesedit/TXT NOTES " + noteTitle);
+    props.newNoteStateHandler();
   };
 
   return (

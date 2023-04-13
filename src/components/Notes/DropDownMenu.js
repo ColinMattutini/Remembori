@@ -7,7 +7,8 @@ import Select from "@mui/material/Select";
 const DropDownMenu = (props) => {
   const [cards, setCards] = useState("");
   const [name, setName] = useState(Object.keys(localStorage));
-  let fixName = name.filter((e) => !e.includes("TXT NOTES "));
+  let fixName = name.filter((e) => !e.includes("Cognito"));
+  fixName = fixName.filter((e) => !e.includes("TXT NOTES "));
 
   const handleChange = (event) => {
     setCards(event.target.value);

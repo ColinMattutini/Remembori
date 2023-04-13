@@ -6,8 +6,10 @@ import { useNavigate } from "react-router-dom";
 
 const SetsList = () => {
   const [name, setName] = useState(Object.keys(localStorage));
+  let fixName = name.filter((e) => !e.includes("Cognito"));
+  fixName = fixName.filter((e) => !e.includes("TXT NOTES "));
 
-  const individualSetCards = name.map((setNames) => (
+  const individualSetCards = fixName.map((setNames) => (
     <IndividualSets name={setNames} />
   ));
 
