@@ -1,29 +1,28 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import FlashCard from "./FlashCard/FlashCard";
 import classes from "./Homepage.module.css";
-import ReviewPage from "./Review/ReviewPage";
 import { Navigation, Pagination, Virtual } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-
 import "swiper/css";
 import "swiper/css/virtual";
 import NotesSwiper from "./NotesSwiper";
 import NewNoteTitleModal from "./NewNoteTitleModal";
-import AddButtonMenu from "./UI/AddButtonMenu";
-import FooterNavBar from "./UI/FooterNavBar";
 
 const Homepage = () => {
   const nav = useNavigate();
 
   const [name, setName] = useState(Object.keys(localStorage));
+  const [notes, setNotes] = useState(Object.keys(localStorage));
   let fixName = name.filter((e) => !e.includes("TXT NOTES "));
+  fixName = fixName.filter((e) => !e.includes("Cog"));
+
+  let noteName = notes.filter((e) => e.includes("TXT NOTES "));
 
   const [newSetState, setNewSetState] = useState(false);
 
   let termLength = [];
   let blankSets = false;
+  let blankNotes = false;
   console.log(fixName);
   console.log(name);
 
@@ -31,10 +30,16 @@ const Homepage = () => {
     termLength.push(JSON.parse(localStorage.getItem(fixName[i])).length);
   }
 
-  if (name.length === 0) {
+  if (fixName.length === 0) {
     blankSets = true;
   } else {
     blankSets = false;
+  }
+
+  if (noteName.length === 0) {
+    blankNotes = true;
+  } else {
+    blankNotes = false;
   }
 
   const createHandler = () => {
@@ -64,8 +69,15 @@ const Homepage = () => {
             <h2>Remembori</h2>
           </div>
         </div>
-
+        <h2>Your Notes:</h2>
         <NotesSwiper />
+        {blankNotes && (
+          <Swiper>
+            <div className={classes.card}>
+              <div className={classes.title}>No Notes Currently</div>
+            </div>
+          </Swiper>
+        )}
         <div className={classes.midSection}>
           <div className={classes.reviewButton}>
             <h2>Your Sets:</h2>
@@ -73,7 +85,15 @@ const Homepage = () => {
           </div>
         </div>
         <div className={classes.swiperAdjust}>
-          {blankSets && <h1>No Sets Currently</h1>}
+          {blankSets && (
+            <Swiper spaceBetween={25} centeredSlides={true}>
+              <SwiperSlide>
+                <div className={classes.card}>
+                  <div className={classes.title}>No Card Sets Currently</div>
+                </div>
+              </SwiperSlide>
+            </Swiper>
+          )}
           <Swiper
             navigation={true}
             modules={[Virtual, Navigation]}
