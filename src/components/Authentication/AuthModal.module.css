@@ -1,0 +1,19 @@
+.button {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  background-color: none;
+  width: 60%;
+  padding-bottom: 24px;
+}
+
+.button button {
+  margin-top: 2.5rem;
+  background: none;
+  border: 0;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration-line: underline;
+  margin-bottom: auto;
+  background-color: none;
+}
