@@ -44,8 +44,8 @@ const SignUp = () => {
             onChange={passwordHandler}
             required
           />
+          <button>Sign-Up</button>
         </div>
-        <button>Sign-Up</button>
       </form>
     </div>
   );
