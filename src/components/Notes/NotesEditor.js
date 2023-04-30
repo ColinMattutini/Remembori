@@ -148,6 +148,7 @@ const NotesEditor = () => {
 
   const [text, setText] = useState(JSON.parse(localStorage.getItem(pathName)));
   const [cardState, setCardState] = useState(false);
+  let noteId = text.noteId;
 
   const nav = useNavigate();
 
@@ -156,11 +157,11 @@ const NotesEditor = () => {
       StarterKit.configure({
         bulletList: {
           keepMarks: true,
-          keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
+          keepAttributes: false,
         },
         orderedList: {
           keepMarks: true,
-          keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
+          keepAttributes: false,
         },
       }),
     ],
@@ -169,14 +170,42 @@ const NotesEditor = () => {
 
   const saveText = () => {
     let json = editor.getJSON();
+    json = { noteId: noteId, ...json };
+
+    patchNotesRequest(noteId, json);
     json = JSON.stringify(json);
     localStorage.setItem(pathName, json);
   };
 
+  const patchNotesRequest = async (noteId, updateValue) => {
+    let token = localStorage.getItem(
+      "CognitoIdentityServiceProvider.5ckk48ttthca3bm3v5dlmapvbi.b29a2bad-578e-45f1-90fb-26e75512103a.idToken"
+    );
+    const response = await fetch(
+      "https://ridrmxlnkl.execute-api.us-east-1.amazonaws.com/Prod/note",
+      {
+        method: "PATCH",
+        body: JSON.stringify({
+          noteId: noteId,
+          updateKey: "content",
+          updateValue: updateValue,
+        }),
+        headers: {
+          authToken: token,
+
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (response.ok) {
+      console.log("SUCCESS");
+    } else {
+      console.log("FAIL");
+    }
+  };
+
   const checkHighlighted = () => {
     const high = window.getSelection().toString();
-
-    console.log(high);
   };
 
   const backHandler = () => {
