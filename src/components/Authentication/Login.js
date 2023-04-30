@@ -27,10 +27,11 @@ const Login = (props) => {
           "Cognitousername",
           data.idToken.payload["cognito:username"]
         );
-        fetchAllSets(userId);
-        fetchAllNotes(userId);
-        props.authModalHandler();
       })
+      .then(() => fetchAllSets(localStorage.getItem("Cognitousername")))
+      .then(() => fetchAllNotes(localStorage.getItem("Cognitousername")))
+      .then(() => props.authModalHandler())
+      .then(() => window.location.reload())
       .catch((err) => {
         console.log("Failed to login", err);
       });
