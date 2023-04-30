@@ -20,16 +20,19 @@ const AuthModal = (props) => {
         <AuthStatus />
         <button onClick={props.authModalHandler}>X</button>
         {loginState && <Login authModalHandler={props.authModalHandler} />}
+
+        {!loginState && <SignUp />}
         {loginState && (
+          <div className={classes.button}>
+            <button onClick={loginStateHandler}>Sign Up Here</button>
+          </div>
+        )}
+        {!loginState && (
           <div className={classes.button}>
             <button onClick={loginStateHandler}>
               Already Have an Account?
             </button>
           </div>
-        )}
-        {!loginState && <SignUp />}
-        {!loginState && (
-          <button onClick={loginStateHandler}>Sign Up Here</button>
         )}
       </Modal>
     </Account>
