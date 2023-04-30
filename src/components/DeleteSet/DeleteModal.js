@@ -10,8 +10,38 @@ const DeleteModal = (props) => {
   const nav = useNavigate();
 
   const deleteHandler = () => {
+    let cardSet = JSON.parse(localStorage.getItem(pathName));
+    let setId = cardSet[0].setId;
     localStorage.removeItem(pathName);
+    deleteSet(setId);
     nav("/reviewset");
+  };
+
+  const deleteSet = async (setId) => {
+    let token = localStorage.getItem(
+      "CognitoIdentityServiceProvider.5ckk48ttthca3bm3v5dlmapvbi.b29a2bad-578e-45f1-90fb-26e75512103a.idToken"
+    );
+    const response = await fetch(
+      "https://ridrmxlnkl.execute-api.us-east-1.amazonaws.com/Prod/flashcard",
+      {
+        method: "DELETE",
+        body: JSON.stringify({
+          setId: setId,
+        }),
+
+        headers: {
+          authToken: token,
+
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (response.ok) {
+      console.log("SUCCESS");
+    } else {
+      console.log("FAIL");
+    }
   };
 
   return (
