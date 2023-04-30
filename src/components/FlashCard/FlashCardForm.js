@@ -6,7 +6,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import IconButton from "@mui/material/IconButton";
+var uuid = require("uuid");
 
 const FlashCardForm = () => {
   const [counter, setCounter] = useState(1);
@@ -44,7 +44,10 @@ const FlashCardForm = () => {
     let blankSet = cardSet.filter((item) => item.question);
     setCardSet(blankSet);
     let trimTitle = title.trim();
+    let id = uuid.v1();
+    blankSet = blankSet.map((obj) => ({ ...obj, setId: id }));
     localStorage.setItem(trimTitle, JSON.stringify(blankSet));
+    submitCardsFetch(trimTitle, blankSet, id);
     nav("/review/" + trimTitle);
   };
 
@@ -59,6 +62,34 @@ const FlashCardForm = () => {
     let test = cardSet;
     setCardSet(test);
     setCounter(counter - 1);
+  };
+
+  const submitCardsFetch = async (title, cardSet, id) => {
+    let token = localStorage.getItem(
+      "CognitoIdentityServiceProvider.5ckk48ttthca3bm3v5dlmapvbi.b29a2bad-578e-45f1-90fb-26e75512103a.idToken"
+    );
+    const response = await fetch(
+      "https://ridrmxlnkl.execute-api.us-east-1.amazonaws.com/Prod/flashcard",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          setId: id,
+          userId: localStorage.getItem("Cognitousername"),
+          setName: title,
+          flashCards: cardSet,
+        }),
+        headers: {
+          authToken: token,
+
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (response.ok) {
+      console.log("SUCCESS");
+    } else {
+      console.log("FAIL");
+    }
   };
 
   return (
