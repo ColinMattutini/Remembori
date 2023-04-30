@@ -22,12 +22,78 @@ const Login = (props) => {
 
     authenticate(email, password)
       .then((data) => {
-        console.log("Logged in!", data);
+        let userId = data.idToken.payload["cognito:username"];
+        localStorage.setItem(
+          "Cognitousername",
+          data.idToken.payload["cognito:username"]
+        );
+        fetchAllSets(userId);
+        fetchAllNotes(userId);
         props.authModalHandler();
       })
       .catch((err) => {
         console.log("Failed to login", err);
       });
+  };
+
+  const fetchAllSets = async (userId) => {
+    let token = localStorage.getItem(
+      "CognitoIdentityServiceProvider.5ckk48ttthca3bm3v5dlmapvbi.b29a2bad-578e-45f1-90fb-26e75512103a.idToken"
+    );
+    const response = await fetch(
+      "https://ridrmxlnkl.execute-api.us-east-1.amazonaws.com/Prod/flashcard?userId=" +
+        userId,
+      {
+        headers: {
+          authToken: token,
+
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await response.json();
+
+    for (const setId in data) {
+      localStorage.setItem(
+        data[setId].setName,
+        JSON.stringify(data[setId].flashCards)
+      );
+    }
+    if (response.ok) {
+      console.log("SUCCESS");
+    } else {
+      console.log("FAIL");
+    }
+  };
+
+  const fetchAllNotes = async (userId) => {
+    let token = localStorage.getItem(
+      "CognitoIdentityServiceProvider.5ckk48ttthca3bm3v5dlmapvbi.b29a2bad-578e-45f1-90fb-26e75512103a.idToken"
+    );
+    const response = await fetch(
+      "https://ridrmxlnkl.execute-api.us-east-1.amazonaws.com/Prod/note?userId=" +
+        userId,
+      {
+        headers: {
+          authToken: token,
+
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await response.json();
+
+    for (const noteId in data) {
+      localStorage.setItem(
+        data[noteId].noteName,
+        JSON.stringify(data[noteId].content)
+      );
+    }
+    if (response.ok) {
+      console.log("SUCCESS");
+    } else {
+      console.log("FAIL");
+    }
   };
 
   return (
