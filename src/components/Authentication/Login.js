@@ -23,6 +23,8 @@ const Login = (props) => {
     authenticate(email, password)
       .then((data) => {
         let userId = data.idToken.payload["cognito:username"];
+        let token = data.idToken.jwtToken;
+        localStorage.setItem("Cognitotoken", token);
         localStorage.setItem(
           "Cognitousername",
           data.idToken.payload["cognito:username"]
@@ -38,9 +40,7 @@ const Login = (props) => {
   };
 
   const fetchAllSets = async (userId) => {
-    let token = localStorage.getItem(
-      "CognitoIdentityServiceProvider.5ckk48ttthca3bm3v5dlmapvbi.b29a2bad-578e-45f1-90fb-26e75512103a.idToken"
-    );
+    let token = localStorage.getItem("Cognitotoken");
     const response = await fetch(
       "https://ridrmxlnkl.execute-api.us-east-1.amazonaws.com/Prod/flashcard?userId=" +
         userId,
@@ -54,11 +54,13 @@ const Login = (props) => {
     );
     const data = await response.json();
 
-    for (const setId in data) {
-      localStorage.setItem(
-        data[setId].setName,
-        JSON.stringify(data[setId].flashCards)
-      );
+    if (Array.isArray(data) || data.length) {
+      for (const setId in data) {
+        localStorage.setItem(
+          data[setId].setName,
+          JSON.stringify(data[setId].flashCards)
+        );
+      }
     }
     if (response.ok) {
       console.log("SUCCESS");
@@ -68,9 +70,7 @@ const Login = (props) => {
   };
 
   const fetchAllNotes = async (userId) => {
-    let token = localStorage.getItem(
-      "CognitoIdentityServiceProvider.5ckk48ttthca3bm3v5dlmapvbi.b29a2bad-578e-45f1-90fb-26e75512103a.idToken"
-    );
+    let token = localStorage.getItem("Cognitotoken");
     const response = await fetch(
       "https://ridrmxlnkl.execute-api.us-east-1.amazonaws.com/Prod/note?userId=" +
         userId,
@@ -83,12 +83,13 @@ const Login = (props) => {
       }
     );
     const data = await response.json();
-
-    for (const noteId in data) {
-      localStorage.setItem(
-        data[noteId].noteName,
-        JSON.stringify(data[noteId].content)
-      );
+    if (Array.isArray(data) || data.length) {
+      for (const noteId in data) {
+        localStorage.setItem(
+          data[noteId].noteName,
+          JSON.stringify(data[noteId].content)
+        );
+      }
     }
     if (response.ok) {
       console.log("SUCCESS");
