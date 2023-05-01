@@ -34,9 +34,7 @@ const NewNoteTitleModal = (props) => {
   };
 
   const postNotes = async (noteId, noteName, content) => {
-    let token = localStorage.getItem(
-      "CognitoIdentityServiceProvider.5ckk48ttthca3bm3v5dlmapvbi.b29a2bad-578e-45f1-90fb-26e75512103a.idToken"
-    );
+    let token = localStorage.getItem("Cognitotoken");
     const response = await fetch(
       "https://ridrmxlnkl.execute-api.us-east-1.amazonaws.com/Prod/note",
       {
