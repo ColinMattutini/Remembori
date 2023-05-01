@@ -12,8 +12,14 @@ import AuthModal from "../Authentication/AuthModal";
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
 import NewNoteTitleModal from "../NewNoteTitleModal";
+import { useContext } from "react";
+import { AccountContext } from "../Authentication/Account";
+import { useEffect } from "react";
+import LogoutMenu from "./LogoutMenu";
 
 const FooterNavBar = (props) => {
+  const { getSession, logout } = useContext(AccountContext);
+  const [status, setStatus] = useState(false);
   const [value, setValue] = useState();
   const [auth, setAuth] = useState(false);
   const [newSetState, setNewSetState] = useState(false);
@@ -39,6 +45,19 @@ const FooterNavBar = (props) => {
   const newNoteStateHandler = () => {
     newSetState ? setNewSetState(false) : setNewSetState(true);
   };
+
+  const newLogout = () => {
+    logout();
+    nav("/");
+    localStorage.clear();
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    getSession().then((session) => {
+      setStatus(true);
+    });
+  }, [authModalHandler]);
 
   return (
     <div>
@@ -73,11 +92,20 @@ const FooterNavBar = (props) => {
             />
 
             <BottomNavigationAction label="Notes" icon={<DescriptionIcon />} />
-            <BottomNavigationAction
-              onClick={authModalHandler}
-              label="Account"
-              icon={<PersonIcon />}
-            />
+            {!status && (
+              <BottomNavigationAction
+                onClick={authModalHandler}
+                label="Account"
+                icon={<PersonIcon />}
+              />
+            )}
+            {status && (
+              <BottomNavigationAction
+                onClick={newLogout}
+                label="Logout"
+                icon={<PersonIcon />}
+              />
+            )}
           </BottomNavigation>
         </Box>
       </div>
