@@ -13,15 +13,13 @@ const EditList = () => {
     cards = cards.filter((item) => item.question);
     let updateKey = cards[0].setId;
     localStorage.setItem(pathName, JSON.stringify(cards));
-    console.log(updateKey);
-    patchRequest(updateKey, JSON.stringify(cards));
+
+    patchRequest(updateKey, cards);
     nav("/review/" + pathName);
   };
 
   const patchRequest = async (updateKey, updateValue) => {
-    let token = localStorage.getItem(
-      "CognitoIdentityServiceProvider.5ckk48ttthca3bm3v5dlmapvbi.b29a2bad-578e-45f1-90fb-26e75512103a.idToken"
-    );
+    let token = localStorage.getItem("Cognitotoken");
     const response = await fetch(
       "https://ridrmxlnkl.execute-api.us-east-1.amazonaws.com/Prod/flashcard",
       {
