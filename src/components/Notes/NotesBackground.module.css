@@ -2,10 +2,12 @@
   display: flex;
   width: 100%;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 .mainbackground {
   /* padding: 1rem; */
+  margin-left: 23%;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 1rem;
@@ -14,15 +16,22 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   border-radius: 14px;
   background-color: #ffffff;
-  margin: auto;
+  /* margin: auto; */
   overflow: scroll;
   scrollbar-width: none;
   background-image: none;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none;
+}
+
+.mainbackground::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
 
 @media screen and (max-width: 540px) {
   .mainbackground {
     width: 100%;
     height: 100vh;
+    margin: auto;
   }
 }
