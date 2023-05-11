@@ -31,7 +31,7 @@ const NotesSwiper = () => {
       <Swiper
         navigation={true}
         modules={[Virtual, Navigation]}
-        spaceBetween={25}
+        spaceBetween={58}
         virtual
         centeredSlides={true}
         slidesPerView={1.2}
