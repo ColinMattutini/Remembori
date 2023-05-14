@@ -55,6 +55,10 @@ export default function FullScreenNavBar() {
     newSetState ? setNewSetState(false) : setNewSetState(true);
   };
 
+  const noteListingNav = () => {
+    nav("/notesreview");
+  };
+
   const newLogout = () => {
     logout();
     nav("/");
@@ -125,7 +129,7 @@ export default function FullScreenNavBar() {
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton>
+              <ListItemButton onClick={noteListingNav}>
                 <ListItemIcon>
                   <DescriptionIcon />
                 </ListItemIcon>
