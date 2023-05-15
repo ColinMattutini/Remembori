@@ -23,8 +23,6 @@ const Homepage = () => {
   let termLength = [];
   let blankSets = false;
   let blankNotes = false;
-  console.log(fixName);
-  console.log(name);
 
   for (let i = 0; i < fixName.length; i++) {
     termLength.push(JSON.parse(localStorage.getItem(fixName[i])).length);
@@ -97,7 +95,7 @@ const Homepage = () => {
           <Swiper
             navigation={true}
             modules={[Virtual, Navigation]}
-            spaceBetween={25}
+            spaceBetween={55}
             virtual
             centeredSlides={true}
             slidesPerView={1.2}
